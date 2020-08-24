@@ -1,6 +1,6 @@
 public class Main {
 
-@archivo 
+@archivo 12345
 
     public static void main(String[] args) {
         int n,s=0,x;
