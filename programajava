@@ -1,6 +1,6 @@
 public class Main {
 
-@archivo modi
+@archivo mo
 
     public static void main(String[] args) {
         int n,s=0,x;
