@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuariTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{usuariController.selected.id}" title="#{bundle.EditUsuariTitle_id}" required="true" requiredMessage="#{bundle.EditUsuariRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{usuariController.selected.usuario}" title="#{bundle.EditUsuariTitle_usuario}" />
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{usuariController.selected.nombre}" title="#{bundle.EditUsuariTitle_nombre}" />
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{usuariController.selected.apellido}" title="#{bundle.EditUsuariTitle_apellido}" />
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{usuariController.selected.correo}" title="#{bundle.EditUsuariTitle_correo}" />
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_contrasena}" for="contrasena" />
+                    <h:inputText id="contrasena" value="#{usuariController.selected.contrasena}" title="#{bundle.EditUsuariTitle_contrasena}" />
+                    <h:outputLabel value="#{bundle.EditUsuariLabel_comprador}" for="comprador" />
+                    <h:selectOneMenu id="comprador" value="#{usuariController.selected.comprador}" title="#{bundle.EditUsuariTitle_comprador}" >
+                        <f:selectItems value="#{compradorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{usuariController.update}" value="#{bundle.EditUsuariSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuariViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuariController.prepareList}" value="#{bundle.EditUsuariShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuariIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

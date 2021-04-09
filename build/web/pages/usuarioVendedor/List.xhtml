@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListUsuarioVendedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListUsuarioVendedorEmpty}" rendered="#{usuarioVendedorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{usuarioVendedorController.items.rowCount > 0}">
+                    <h:outputText value="#{usuarioVendedorController.pagination.pageFirstItem + 1}..#{usuarioVendedorController.pagination.pageLastItem + 1}/#{usuarioVendedorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{usuarioVendedorController.previous}" value="#{bundle.Previous} #{usuarioVendedorController.pagination.pageSize}" rendered="#{usuarioVendedorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{usuarioVendedorController.next}" value="#{bundle.Next} #{usuarioVendedorController.pagination.pageSize}" rendered="#{usuarioVendedorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{usuarioVendedorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioVendedorTitle_IDvendedor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.IDvendedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioVendedorTitle_usuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioVendedorTitle_contrasena}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.contrasena}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioVendedorTitle_productoVendedor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productoVendedor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListUsuarioVendedorTitle_productoVendedor1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.productoVendedor1}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{usuarioVendedorController.prepareView}" value="#{bundle.ListUsuarioVendedorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usuarioVendedorController.prepareEdit}" value="#{bundle.ListUsuarioVendedorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{usuarioVendedorController.destroy}" value="#{bundle.ListUsuarioVendedorDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{usuarioVendedorController.prepareCreate}" value="#{bundle.ListUsuarioVendedorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListUsuarioVendedorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

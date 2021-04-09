@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuariTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsuariLabel_id}"/>
+                    <h:outputText value="#{usuariController.selected.id}" title="#{bundle.ViewUsuariTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewUsuariLabel_usuario}"/>
+                    <h:outputText value="#{usuariController.selected.usuario}" title="#{bundle.ViewUsuariTitle_usuario}"/>
+                    <h:outputText value="#{bundle.ViewUsuariLabel_nombre}"/>
+                    <h:outputText value="#{usuariController.selected.nombre}" title="#{bundle.ViewUsuariTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewUsuariLabel_apellido}"/>
+                    <h:outputText value="#{usuariController.selected.apellido}" title="#{bundle.ViewUsuariTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewUsuariLabel_correo}"/>
+                    <h:outputText value="#{usuariController.selected.correo}" title="#{bundle.ViewUsuariTitle_correo}"/>
+                    <h:outputText value="#{bundle.ViewUsuariLabel_contrasena}"/>
+                    <h:outputText value="#{usuariController.selected.contrasena}" title="#{bundle.ViewUsuariTitle_contrasena}"/>
+                    <h:outputText value="#{bundle.ViewUsuariLabel_comprador}"/>
+                    <h:outputText value="#{usuariController.selected.comprador}" title="#{bundle.ViewUsuariTitle_comprador}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuariController.destroyAndView}" value="#{bundle.ViewUsuariDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsuariEditLink}"/>
+                <br />
+                <h:commandLink action="#{usuariController.prepareCreate}" value="#{bundle.ViewUsuariCreateLink}" />
+                <br />
+                <h:commandLink action="#{usuariController.prepareList}" value="#{bundle.ViewUsuariShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsuariIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
