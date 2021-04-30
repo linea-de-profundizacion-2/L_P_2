@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrar_productos</title>
+        <link rel="stylesheet" type="text/css" href="statico/css/index.css"/>
+    </h:head>
+   
+    <h:body>
+        <div class="modal-dialog text-center">
+        
+        <div class="col-sm-10 main-section">
+            
+            <div class="modal-content">
+                
+                   <div class="form-group  ">
+                
+                <div class="col-8 user-img">
+     <p:fieldset  legend="Registrar nuevo producto" toggleable="true">
+         
+         <h:form>
+             <p:fieldset legend="nuevo" toggleable="true">
+                 <p:panelGrid>
+                     <p:commandButton value="Nuevo producto" oncomplete="PF('producto').show()"/>
+                 </p:panelGrid>
+                 
+             </p:fieldset>
+             
+         </h:form>
+         
+         
+         <h:form id="w" >
+                      
+                      <h2>Productos agricultor</h2>
+            <p:messages autoUpdate="true"/>
+            <h:panelGrid columns="3">
+                
+             <p:outputLabel for="productoc"  value="Cantridad de producto"/>
+             <p:selectOneMenu id="productoc" style="width : 63px" value="#{controlproducto.selected.cantidadProducto}"  required="true" requiredMessage="Producto requerido">
+                 <f:selectItem itemValue="0" itemLabel="0"/>
+                 <f:selectItem itemValue="1" itemLabel="1"/>
+                  <f:selectItem itemValue="2" itemLabel="2"/> 
+                  <f:selectItem itemValue="3" itemLabel="3"/>
+                  <f:selectItem itemValue="4" itemLabel="4"/> 
+                  <f:selectItem itemValue="5" itemLabel="5"/>
+                  <f:selectItem itemValue="6" itemLabel="6"/> 
+                  <f:selectItem itemValue="7" itemLabel="7"/>
+                  <f:selectItem itemValue="8" itemLabel="8"/> 
+             </p:selectOneMenu>
+             <p:selectOneMenu id="produ"  value="#{controlproducto.selected.unidad}"  required="true" requiredMessage="Unidad de producto requerido">
+                 <f:selectItem itemValue="null" itemLabel="Seleccionar"/>
+                 <f:selectItem itemValue="Kg" itemLabel="Kg"/>
+                  <f:selectItem itemValue="g" itemLabel="g"/> 
+                  <f:selectItem itemValue="Bultos" itemLabel="Bultos"/> 
+                  <f:selectItem itemValue="Unidades" itemLabel="Unidades"/> 
+             </p:selectOneMenu>
+             
+             </h:panelGrid>
+             <h:panelGrid columns="2">
+                 
+             <p:outputLabel for="pr" value="Producto"/>
+             <p:selectOneMenu style="width : 270px" id="pr" value="#{controlproducto.selected.producto}"  required="true" requiredMessage="Unidad de producto requerido">
+                 <f:selectItem itemValue="null" itemLabel="Seleccionar"/>
+                 <f:selectItem itemValue="Cebolla" itemLabel="Cebolla"/>
+                  <f:selectItem itemValue="Papa" itemLabel="Papa"/> 
+                  <f:selectItem itemValue="Maiz" itemLabel="Maiz"/> 
+                  <f:selectItem itemValue="Alberja" itemLabel="Alberja"/> 
+             </p:selectOneMenu>
+              <p:outputLabel for="precio" value="Precio"/>
+              <p:inputText id="precio" value="#{controlproducto.selected.precio}"   required="true" requiredMessage="Precio requerido" />
+             
+              <p:outputLabel for="txtapellido" value="Descripcion"/>
+              <p:inputText id="txtapellido"  value="#{controlproducto.selected.descripcion}"  required="true" requiredMessage="Descripcion requerido"/>
+             
+              <p:outputLabel for="txtcorreo" value="imagen"/>
+              <p:inputText id="txtcorreo" type="email" value="#{controlproducto.selected.urlImagen}"   required="true" requiredMessage="Correo requerido"/>
+             
+                <p:outputLabel for="start" value="fecha"/>
+                <p:inputText value="#{controlproducto.selected.fechaPublicacion}" type="date" id="start" />
+                
+             
+              <p:commandButton  class="button" value="Registrar Producto" update=":qw :w" actionListener  ="#{controlproducto.registrar()}"  />
+            
+             </h:panelGrid>
+           
+        </h:form>
+        </p:fieldset>
+                      
+                    <h:form id="qw" >
+  
+            
+           
+            <h:panelGrid columns="2">
+                <p:messages autoUpdate="true" for="sd"/>
+                <p:fieldset  legend="Datos de productos" toggleable="true">
+                    <p:dataTable value="#{listarproductos.listpro}" var="pro" id="sd">
+                        <p:column headerText="ID">
+                            <h:outputText value="#{pro.IDproducto}"/>
+                           
+                        </p:column>
+                        <p:column headerText="Cantidad disponible">
+                            <h:outputText value="#{pro.cantidadProducto},#{pro.unidad}"/>
+                        </p:column>
+                        <p:column headerText="Descripcion">
+                            <h:outputText value="#{pro.descripcion}"/>
+                         </p:column>
+                        <p:column headerText="Imagen producto">
+                            <h:outputText value="#{pro.urlImagen}"/>
+                        </p:column>
+                        <p:column headerText="Fecha publicacion">
+                            <h:outputText value="#{pro.fechaPublicacion}"/>
+                        </p:column>       
+                        <p:column headerText="Precio">
+                           <h:outputText value="#{pro.precio}"/>
+                        </p:column>
+                        <p:column headerText="Ofertas">
+                            
+                           <p:commandButton  class="button" value="Eliminar" update=":qw" actionListener  ="#{controlproducto.liminar(pro)}"/>
+                           
+                        </p:column>
+                    </p:dataTable>
+                                 
+                </p:fieldset>
+                    
+                
+              
+             </h:panelGrid>
+           
+            </h:form>
+    
+           
+        
+       </div>
+            </div>
+        </div>
+    </div>
+            </div>
+    
+    </h:body>
+    
+</html>

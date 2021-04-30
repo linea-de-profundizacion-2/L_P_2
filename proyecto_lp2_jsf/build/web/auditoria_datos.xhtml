@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registrar datos auditoria</title>
+        <link rel="stylesheet" type="text/css" href="statico/css/index.css"/>
+    </h:head>
+   
+    <h:body id="sd">
+        <div class="modal-dialog text-center">
+        
+        <div class="col-sm-10 main-section">
+            
+            <div class="modal-content">
+                
+                   <div class="form-group  ">
+                
+                <div class="col-8 user-img">
+     <p:fieldset  legend="registar datos" toggleable="true">
+         
+         <h:form id="d" >
+                      
+                      <h2>Registrar datos auditoria</h2>
+            <p:messages autoUpdate="true"/>
+            
+             <h:panelGrid columns="2">
+                 
+             
+              <p:outputLabel for="usuario" value="Usuario"/>
+              <p:inputText id="usuario" value="#{auditoriacontroller.selected.usuario}"   required="true" requiredMessage="usuario requerido" />
+             
+              <p:outputLabel for="acc" value="Accion realizada"/>
+              <p:inputText id="acc"  value="#{auditoriacontroller.selected.accionRealizada}"  required="true" requiredMessage="Descripcion requerido"/>
+             
+             
+              <p:outputLabel for="start" value="Fecha" />
+                <p:inputText value="#{auditoriacontroller.selected.fecha}" type="date" id="start" />
+                
+              
+                <p:outputLabel for="st" value="Hora de registro" />
+                <p:inputText type="time" id="st" value="#{auditoriacontroller.selected.hora}"/>
+                
+             
+                <p:commandButton  class="button" value="Registrar Producto" actionListener  ="#{auditoriacontroller.registrar()}" update=":s, :d"  />
+             
+                
+             </h:panelGrid>
+           
+        </h:form>
+        
+         
+            
+        </p:fieldset>
+                      
+                    <h:form id="s" >
+  
+            
+           
+            <h:panelGrid columns="2">
+                
+                <p:fieldset  legend="Datos" toggleable="true">
+                    <p:dataTable  value="#{audit.listau}" var="pro">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{pro.id}"/>
+                           </p:column>
+                        <p:column headerText="usuario">
+                            <h:outputText value="#{pro.usuario}"/>
+                         </p:column>
+                        <p:column headerText="accion realizada">
+                            <h:outputText value="#{pro.accionRealizada}"/>
+                        </p:column>
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{pro.fecha}"/>
+                        </p:column>       
+                        <p:column headerText="hora de registro">
+                            <h:outputText value="#{pro.hora}"/>
+                       </p:column>   
+                        <p:column headerText="hora de registro">
+                            <p:commandButton  update=":s, :d" class="button" value="Eliminar" actionListener  ="#{auditoriacontroller.eliminacion_de_datos(pro)}"  />
+         
+                       </p:column>  
+                        
+                        
+                    </p:dataTable>
+                                 
+                </p:fieldset>
+                    
+             </h:panelGrid>
+           
+            </h:form>
+    
+           
+        
+       </div>
+            </div>
+        </div>
+    </div>
+            </div>
+    
+    </h:body>
+    
+</html>

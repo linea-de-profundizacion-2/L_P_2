@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCompradorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCompradorEmpty}" rendered="#{compradorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{compradorController.items.rowCount > 0}">
+                    <h:outputText value="#{compradorController.pagination.pageFirstItem + 1}..#{compradorController.pagination.pageLastItem + 1}/#{compradorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{compradorController.previous}" value="#{bundle.Previous} #{compradorController.pagination.pageSize}" rendered="#{compradorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{compradorController.next}" value="#{bundle.Next} #{compradorController.pagination.pageSize}" rendered="#{compradorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{compradorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompradorTitle_IDcomprador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.IDcomprador}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompradorTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompradorTitle_ciudad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciudad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCompradorTitle_usuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{compradorController.prepareView}" value="#{bundle.ListCompradorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{compradorController.prepareEdit}" value="#{bundle.ListCompradorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{compradorController.destroy}" value="#{bundle.ListCompradorDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{compradorController.prepareCreate}" value="#{bundle.ListCompradorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCompradorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

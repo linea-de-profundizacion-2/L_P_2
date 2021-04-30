@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Menu comprador</title>
+        <link rel="stylesheet" type="text/css" href="statico/css/index.css"/>
+    </h:head>
+    <h:body>
+        <div class="modal-dialog text-center">
+        
+        <div class="col-sm-10 main-section">
+            
+            <div class="modal-content">
+                
+                   <div class="form-group  ">
+                
+                <div class="col-8 user-img">
+     
+                
+        
+          <h:form  >
+  
+            <p:messages autoUpdate="true"/>
+           
+            <h:panelGrid columns="2">
+                
+                <p:fieldset  legend="Datos de productos" toggleable="true">
+                    <p:dataTable value="#{listarproductos.listpro}" var="pro">
+                        
+                        
+                        <p:column headerText="ID">
+                            <h:outputText value="#{pro.IDproducto}"/>
+                        </p:column>
+                        <p:column headerText="Cantidad disponible">
+                            <h:outputText value="#{pro.cantidadProducto} #{pro.unidad}"/>
+                        </p:column>
+                        <p:column headerText="Descripcin">
+                            <h:outputText value="#{pro.descripcion}"/>
+                         </p:column>
+                        <p:column headerText="Imagen producto">
+                            <h:outputText value="#{pro.urlImagen}"/>
+                        </p:column>
+                        <p:column headerText="Fecha publicacion">
+                            <h:outputText value="#{pro.fechaPublicacion}"/>
+                        </p:column>       
+                        <p:column headerText="Precio">
+                           <h:outputText value="#{pro.precio}"/>
+                        </p:column>
+                        <p:column headerText="Ofertar">
+                           <p:commandButton  value="Nueva oferta" actionListener="index.xhtml"/>
+                           
+                        </p:column>
+                    </p:dataTable>
+                                 
+                </p:fieldset>
+                    
+                
+              
+             </h:panelGrid>
+           <h:link style="color:#FBFBFB;" outcome="auditoria_datos" value="Actividad"/>
+        </h:form>
+   
+        
+           
+        
+       </div>
+            </div>
+        </div>
+    </div>
+            </div>
+    
+    </h:body>
+    
+</html>

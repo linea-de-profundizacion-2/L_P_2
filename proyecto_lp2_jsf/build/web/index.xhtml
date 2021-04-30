@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+
+        <link rel="stylesheet" type="text/css" href="statico/css/index.css"/>
+    </h:head>
+    <h:body>
+        <div class="modal-dialog text-center">
+
+            <div class="col-sm-10 main-section">
+
+                <div class="modal-content">
+
+                    <div class="form-group  ">
+
+                        <div class="col-8 user-img">
+
+                            <h:form id="log">
+                                <h2>Iniciar Sesion</h2>
+                                <p:messages autoUpdate="true"/>
+
+                                <h:panelGrid columns="2">
+
+
+                                    <p:outputLabel  style="color:#FBFBFB;" for="txtusuario" value="Usuario"/>
+                                    <p:inputText id="txtusuario" value="#{logeo_controller.selected.usuario}" required="true"/>
+
+
+                                    <p:outputLabel  style="color:#FBFBFB;" for="txtclave" value="Contraseña"/>
+                                    <p:password id="txtclave" value="#{logeo_controller.selected.contrasena}" required="true"  maxlength="10" size="20"/>
+                                    
+                                    <h:column/>
+
+                                    <p:commandButton  icon="ui-icon-key" value="Iniciar sesion" actionListener="#{logeo_controller.logeo()}"/>
+<p:outputLabel/>
+                              <h:link style="color:#FBFBFB;" value="Registrarse" outcome="registrarse.xhtml"/>
+                                </h:panelGrid>
+                                
+                            
+<br/>
+<br/>
+                            </h:form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+    </h:body>
+
+
+</html>
+
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCompradorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCompradorLabel_IDcomprador}" for="IDcomprador" />
+                    <h:inputText id="IDcomprador" value="#{compradorController.selected.IDcomprador}" title="#{bundle.CreateCompradorTitle_IDcomprador}" required="true" requiredMessage="#{bundle.CreateCompradorRequiredMessage_IDcomprador}"/>
+                    <h:outputLabel value="#{bundle.CreateCompradorLabel_direccion}" for="direccion" />
+                    <h:inputText id="direccion" value="#{compradorController.selected.direccion}" title="#{bundle.CreateCompradorTitle_direccion}" required="true" requiredMessage="#{bundle.CreateCompradorRequiredMessage_direccion}"/>
+                    <h:outputLabel value="#{bundle.CreateCompradorLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{compradorController.selected.ciudad}" title="#{bundle.CreateCompradorTitle_ciudad}" required="true" requiredMessage="#{bundle.CreateCompradorRequiredMessage_ciudad}"/>
+                    <h:outputLabel value="#{bundle.CreateCompradorLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{compradorController.selected.usuario}" title="#{bundle.CreateCompradorTitle_usuario}" required="true" requiredMessage="#{bundle.CreateCompradorRequiredMessage_usuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{compradorController.create}" value="#{bundle.CreateCompradorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{compradorController.prepareList}" value="#{bundle.CreateCompradorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCompradorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

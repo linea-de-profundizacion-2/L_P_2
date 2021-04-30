@@ -1,0 +1,35 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr;
+  gap: 1% 1%;
+}
+
+.imagen { grid-area: 1 / 1 / 3 / 2; }
+
+.id {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "idf producto cantidad"
+    "idf producto cantidad";
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.idf { grid-area: idf; }
+
+.producto { grid-area: producto; }
+
+.cantidad { grid-area: cantidad; }
+
+.descripcion { grid-area: 2 / 2 / 3 / 3; }
+
+.f { grid-area: 1 / 3 / 3 / 4; }
+
+.fecha { grid-area: 1 / 3 / 2 / 4; }
+
+.precio { grid-area: 2 / 3 / 3 / 4; }
+
+.realiar-oferta { grid-area: 1 / 4 / 2 / 5; }

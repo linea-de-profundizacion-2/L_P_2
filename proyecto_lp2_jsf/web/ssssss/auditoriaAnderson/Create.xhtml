@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAuditoriaAndersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAuditoriaAndersonLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{auditoriaAndersonController.selected.id}" title="#{bundle.CreateAuditoriaAndersonTitle_id}" required="true" requiredMessage="#{bundle.CreateAuditoriaAndersonRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateAuditoriaAndersonLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{auditoriaAndersonController.selected.usuario}" title="#{bundle.CreateAuditoriaAndersonTitle_usuario}" required="true" requiredMessage="#{bundle.CreateAuditoriaAndersonRequiredMessage_usuario}"/>
+                    <h:outputLabel value="#{bundle.CreateAuditoriaAndersonLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{auditoriaAndersonController.selected.fecha}" title="#{bundle.CreateAuditoriaAndersonTitle_fecha}" required="true" requiredMessage="#{bundle.CreateAuditoriaAndersonRequiredMessage_fecha}"/>
+                    <h:outputLabel value="#{bundle.CreateAuditoriaAndersonLabel_accionRealizada}" for="accionRealizada" />
+                    <h:inputText id="accionRealizada" value="#{auditoriaAndersonController.selected.accionRealizada}" title="#{bundle.CreateAuditoriaAndersonTitle_accionRealizada}" required="true" requiredMessage="#{bundle.CreateAuditoriaAndersonRequiredMessage_accionRealizada}"/>
+                    <h:outputLabel value="#{bundle.CreateAuditoriaAndersonLabel_hora}" for="hora" />
+                    <h:inputText id="hora" value="#{auditoriaAndersonController.selected.hora}" title="#{bundle.CreateAuditoriaAndersonTitle_hora}" required="true" requiredMessage="#{bundle.CreateAuditoriaAndersonRequiredMessage_hora}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auditoriaAndersonController.create}" value="#{bundle.CreateAuditoriaAndersonSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{auditoriaAndersonController.prepareList}" value="#{bundle.CreateAuditoriaAndersonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAuditoriaAndersonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
